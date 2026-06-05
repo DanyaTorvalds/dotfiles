@@ -1,0 +1,124 @@
+* {
+    font-family: "JetBrains Mono", "Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(20, 20, 20, 0.85);
+    color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition-property: background-color;
+    transition-duration: 0.3s;
+}
+
+/* Воркспейсы */
+#workspaces {
+    background: transparent;
+    margin: 0 5px;
+    padding: 0 10px;
+}
+
+#workspaces button {
+    color: #888888;
+    padding: 0 8px;
+    margin: 0 2px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+    font-weight: bold;
+}
+
+#workspaces button:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Окно */
+#window {
+    color: #cccccc;
+    margin: 0 10px;
+    padding: 0 10px;
+}
+
+/* Часы */
+#clock {
+    color: #ffffff;
+    margin: 0 15px;
+    padding: 0 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+/* Звук */
+#pulseaudio {
+    color: #cccccc;
+    margin: 0 5px;
+    padding: 0 10px;
+}
+
+#pulseaudio.muted {
+    color: #ff6b6b;
+}
+
+/* Сеть */
+#network {
+    color: #cccccc;
+    margin: 0 5px;
+    padding: 0 10px;
+}
+
+#network.disconnected {
+    color: #ff6b6b;
+}
+
+/* Батарея */
+#battery {
+    color: #cccccc;
+    margin: 0 5px;
+    padding: 0 10px;
+}
+
+#battery.warning {
+    color: #ffa500;
+}
+
+#battery.critical {
+    color: #ff6b6b;
+    animation: blink 1s linear infinite;
+}
+
+#battery.charging {
+    color: #90ee90;
+}
+
+@keyframes blink {
+    50% { opacity: 0.5; }
+}
+
+/* Трей */
+#tray {
+    margin: 0 10px;
+    padding: 0 10px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+/* Разделитель */
+#custom-separator {
+    color: #444444;
+    margin: 0 5px;
+    font-size: 16px;
+}

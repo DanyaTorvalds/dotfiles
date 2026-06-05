@@ -1,0 +1,30 @@
+{
+  "logo": {
+    "source": "/home/danya/Pictures/Terminal_Images/*.png",
+    "type": "kitty-direct"
+  },
+  "display": {
+    "color": {
+      "keys": "bold_white",
+      "title": "bold_white"
+    }
+  },
+  "modules": [
+    "break",
+    "break",
+    "title",
+    "os",
+    "kernel",
+    "uptime",
+    "break",
+    "wm",
+    "theme",
+    "break",
+    "cpu",
+    "gpu",
+    "memory",
+    "disk",
+    "break",
+    "break"
+  ]
+}
