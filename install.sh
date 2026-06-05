@@ -1,22 +1,19 @@
 #!/bin/bash
 
-# === ЦВЕТА ===
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-# === ПРОВЕРКИ ===
 echo -e "${BLUE}=== Установка dotfiles ===${NC}"
 
-# Проверяем что скрипт запущен из папки dotfiles
 if [ ! -f "install.sh" ]; then
     echo -e "${RED}Ошибка: запусти скрипт из папки dotfiles${NC}"
     exit 1
 fi
 
-# Проверяем наличие GNU Stow
 if ! command -v stow &> /dev/null; then
     echo -e "${YELLOW}GNU Stow не установлен. Устанавливаю...${NC}"
     if command -v pacman &> /dev/null; then
@@ -31,10 +28,8 @@ if ! command -v stow &> /dev/null; then
     fi
 fi
 
-# === УСТАНОВКА КОНФИГОВ ЧЕРЕЗ STOW ===
 echo -e "\n${GREEN}=== Установка конфигов ===${NC}"
 
-# Список пакетов для установки
 PACKAGES=(
     ".config/hypr"
     ".config/waybar"
@@ -55,7 +50,6 @@ for pkg in "${PACKAGES[@]}"; do
     fi
 done
 
-# === УСТАНОВКА ОБОЕВ И КАРТИНОК ===
 echo -e "\n${GREEN}=== Установка обоев и картинок ===${NC}"
 
 if [ -d "Pictures/wallpapers" ]; then
@@ -70,12 +64,10 @@ if [ -d "Pictures/Terminal_Images" ]; then
     echo -e "${BLUE}Картинки для fastfetch установлены${NC}"
 fi
 
-# === ПРАВА НА СКРИПТЫ ===
 echo -e "\n${GREEN}=== Настройка прав ===${NC}"
 chmod +x ~/.local/bin/screenshot-* 2>/dev/null
 echo -e "${BLUE}Скрипты скриншотов готовы${NC}"
 
-# === УСТАНОВКА ПАКЕТОВ (ОПЦИОНАЛЬНО) ===
 echo -e "\n${YELLOW}Хочешь установить необходимые пакеты? (y/n)${NC}"
 read -r install_packages
 
@@ -91,7 +83,6 @@ if [[ "$install_packages" =~ ^[Yy]$ ]]; then
     echo -e "${GREEN}Пакеты установлены!${NC}"
 fi
 
-# === ФИНАЛ ===
 echo -e "\n${GREEN}=== Установка завершена! ===${NC}"
 echo -e "${BLUE}Перезапусти сессию или выполни:${NC}"
 echo -e "  hyprctl reload"
