@@ -53,19 +53,19 @@ done
 echo -e "\n${GREEN}=== Установка обоев и картинок ===${NC}"
 
 if [ -d "Pictures/wallpapers" ]; then
-    mkdir -p ~/Pictures/wallpapers
-    cp -r Pictures/wallpapers/* ~/Pictures/wallpapers/
+    mkdir -p $HOME/Pictures/wallpapers
+    cp -r Pictures/wallpapers/* $HOME/Pictures/wallpapers/
     echo -e "${BLUE}Обои установлены${NC}"
 fi
 
 if [ -d "Pictures/Terminal_Images" ]; then
-    mkdir -p ~/Pictures/Terminal_Images
-    cp -r Pictures/Terminal_Images/* ~/Pictures/Terminal_Images/
+    mkdir -p $HOME/Pictures/Terminal_Images
+    cp -r Pictures/Terminal_Images/* $HOME/Pictures/Terminal_Images/
     echo -e "${BLUE}Картинки для fastfetch установлены${NC}"
 fi
 
 echo -e "\n${GREEN}=== Настройка прав ===${NC}"
-chmod +x ~/.local/bin/screenshot-* 2>/dev/null
+chmod +x $HOME/.local/bin/screenshot-* 2>/dev/null
 echo -e "${BLUE}Скрипты скриншотов готовы${NC}"
 
 echo -e "\n${YELLOW}Хочешь установить необходимые пакеты? (y/n)${NC}"
