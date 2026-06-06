@@ -88,13 +88,13 @@ sudo pacman -S hyprland kitty waybar wofi hyprlock hypridle mako grim slurp wl-c
 # ⌨️ Keybindings
 | Keys | Action |
 |-----------|-------------|
-| **Win + Enter** | Open terminal (Kitty) |
-| **Win + Space** | Application menu (Wofi) |
-| **Win + Q** | Close active window |
-| **Win + M** | Restart Hyprland |
-| **Win + V** | Toggle floating window |
-| **Win + ←/→/↑/↓** | Move focus between windows |
-| **Win + 1-4** | Switch workspaces |
-| **Win + Shift + 1-4** | Move window to workspace |
+| **Super + Enter** | Open terminal (Kitty) |
+| **Super + Space** | Application menu (Wofi) |
+| **Super + Q** | Close active window |
+| **Super + M** | Restart Hyprland |
+| **Super + V** | Toggle floating window |
+| **Super + ←/→/↑/↓** | Move focus between windows |
+| **Super+ 1-4** | Switch workspaces |
+| **Super + Shift + 1-4** | Move window to workspace |
 | **PrintScreen** | Screenshot full screen |
-| **Win + Shift + S** | Screenshot area (to clipboard) |
+| **Super + Shift + S** | Screenshot area (to clipboard) |
