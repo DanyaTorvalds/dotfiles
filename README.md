@@ -15,6 +15,8 @@ My Hyprland configuration with monochrome theme, animations, and blur.
 <img width="1920" height="1080" alt="2026-06-06_02-10-36" src="https://github.com/user-attachments/assets/649a6f58-35a5-4e2b-9e33-fa8999ba932e" />
 <img width="1920" height="1080" alt="2026-06-06_13-01-43" src="https://github.com/user-attachments/assets/32047ffb-760a-4b03-b4f6-c1a112c15027" />
 <img width="1920" height="1080" alt="2026-06-06_02-04-30" src="https://github.com/user-attachments/assets/87c802ee-3430-4eba-9dbc-fdbb462c5b5c" />
+  <img width="64" height="64" alt="220782281" src="https://github.com/user-attachments/assets/7559a86f-bd8b-4752-8475-99c117531e66" />
+
 
 
 </details>
