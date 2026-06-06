@@ -7,6 +7,16 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+# === PRIVILEGE ESCALATION CHECK ===
+if command -v doas &> /dev/null; then
+    PRIV_CMD="doas"
+elif command -v sudo &> /dev/null; then
+    PRIV_CMD="sudo"
+else
+    echo -e "${RED}Error: Neither 'doas' nor 'sudo' found. Please install one of them.${NC}"
+    exit 1
+fi
+
 # === CHECKS ===
 echo -e "${BLUE}=== Installing dotfiles ===${NC}"
 
@@ -20,11 +30,11 @@ fi
 if ! command -v stow &> /dev/null; then
     echo -e "${YELLOW}GNU Stow not found. Installing...${NC}"
     if command -v pacman &> /dev/null; then
-        sudo pacman -S stow --noconfirm
+        $PRIV_CMD pacman -S stow --noconfirm
     elif command -v apt &> /dev/null; then
-        sudo apt install stow -y
+        $PRIV_CMD apt install stow -y
     elif command -v dnf &> /dev/null; then
-        sudo dnf install stow -y
+        $PRIV_CMD dnf install stow -y
     else
         echo -e "${RED}Failed to install stow. Please install it manually.${NC}"
         exit 1
@@ -81,7 +91,7 @@ if [[ "$install_packages" =~ ^[Yy]$ ]]; then
     if command -v pacman &> /dev/null; then
         # Install regular packages via pacman
         echo -e "${BLUE}Installing core packages...${NC}"
-        sudo pacman -S --needed --noconfirm \
+        $PRIV_CMD pacman -S --needed --noconfirm \
             hyprland kitty waybar wofi hyprlock hypridle mako \
             grim slurp wl-clipboard fastfetch swaybg
         
@@ -97,7 +107,7 @@ if [[ "$install_packages" =~ ^[Yy]$ ]]; then
             echo -e "${YELLOW}No AUR helper found. Installing paru...${NC}"
             
             # Install dependencies for paru
-            sudo pacman -S --needed --noconfirm base-devel git
+            $PRIV_CMD pacman -S --needed --noconfirm base-devel git
             
             # Clone and install paru
             cd /tmp
@@ -118,7 +128,7 @@ if [[ "$install_packages" =~ ^[Yy]$ ]]; then
         
         echo -e "${GREEN}All packages installed!${NC}"
     elif command -v apt &> /dev/null; then
-        sudo apt install -y hyprland kitty waybar wofi hyprlock mako grim slurp wl-clipboard fastfetch
+        $PRIV_CMD apt install -y hyprland kitty waybar wofi hyprlock mako grim slurp wl-clipboard fastfetch
     fi
 fi
 
