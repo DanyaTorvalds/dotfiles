@@ -34,11 +34,9 @@ fi
 # === INSTALL CONFIGS WITH STOW ===
 echo -e "\n${GREEN}=== Installing configs ===${NC}"
 
-# Install from .config directory
 if [ -d ".config" ]; then
     cd .config
     
-    # Stow each config directory
     for dir in */; do
         dirname="${dir%/}"
         echo -e "${BLUE}Installing: $dirname${NC}"
@@ -48,7 +46,6 @@ if [ -d ".config" ]; then
     cd ..
 fi
 
-# Install .local/bin
 if [ -d ".local/bin" ]; then
     echo -e "${BLUE}Installing: .local/bin${NC}"
     stow .local
@@ -82,12 +79,47 @@ if [[ "$install_packages" =~ ^[Yy]$ ]]; then
     echo -e "${BLUE}Installing packages...${NC}"
     
     if command -v pacman &> /dev/null; then
-        sudo pacman -S --needed --noconfirm hyprland kitty waybar wofi hyprlock hypridle mako grim slurp wl-clipboard fastfetch swaybg papirus-icon-theme whitesur-gtk-theme whitesur-cursor-theme
+        # Install regular packages via pacman
+        echo -e "${BLUE}Installing core packages...${NC}"
+        sudo pacman -S --needed --noconfirm \
+            hyprland kitty waybar wofi hyprlock hypridle mako \
+            grim slurp wl-clipboard fastfetch swaybg
+        
+        # Check for AUR helper
+        AUR_HELPER=""
+        if command -v yay &> /dev/null; then
+            AUR_HELPER="yay"
+            echo -e "${GREEN}Found yay${NC}"
+        elif command -v paru &> /dev/null; then
+            AUR_HELPER="paru"
+            echo -e "${GREEN}Found paru${NC}"
+        else
+            echo -e "${YELLOW}No AUR helper found. Installing paru...${NC}"
+            
+            # Install dependencies for paru
+            sudo pacman -S --needed --noconfirm base-devel git
+            
+            # Clone and install paru
+            cd /tmp
+            git clone https://aur.archlinux.org/paru.git
+            cd paru
+            makepkg -si --noconfirm
+            cd ~
+            rm -rf /tmp/paru
+            
+            AUR_HELPER="paru"
+            echo -e "${GREEN}paru installed successfully${NC}"
+        fi
+        
+        # Install AUR packages
+        echo -e "${BLUE}Installing AUR packages...${NC}"
+        $AUR_HELPER -S --needed --noconfirm \
+            papirus-icon-theme whitesur-gtk-theme whitesur-cursor-theme
+        
+        echo -e "${GREEN}All packages installed!${NC}"
     elif command -v apt &> /dev/null; then
         sudo apt install -y hyprland kitty waybar wofi hyprlock mako grim slurp wl-clipboard fastfetch
     fi
-    
-    echo -e "${GREEN}Packages installed!${NC}"
 fi
 
 # === DONE ===
