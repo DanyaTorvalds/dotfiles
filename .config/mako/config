@@ -1,4 +1,4 @@
-# === ОБЩИЕ НАСТРОЙКИ ===
+# === GENERAL ===
 max-visible=5
 max-history=20
 sort=-time
@@ -10,22 +10,22 @@ border-size=1
 border-radius=12
 max-icon-size=48
 
-# === СТИЛЬ ===
+# === STYLE ===
 background-color=#141414F2
 text-color=#FFFFFFFF
 border-color=#FFFFFF33
 progress-color=#FFFFFFFF
 
-# === ШРИФТ ===
+# === FONT ===
 font=JetBrains Mono 11
 
-# === ДЕЙСТВИЯ ===
+# === ACTIONS ===
 on-button-left=dismiss
 on-button-right=dismiss-all
 on-button-middle=invoke-default-action
 
-# === ФОРМАТ ===
+# === FORMAT ===
 format=<b>%s</b>\n%b
 
-# === ВРЕМЯ (правильное название!) ===
+# === TIMEOUT ===
 default-timeout=5000
